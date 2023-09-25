@@ -39,3 +39,36 @@ function randomString(length, charset='abcdefghijklmnopqrstuvwxyz') {
 }
 
 console.log(randomString(12));
+
+function randomPhoneNumber(template="+x(xxx)xxxxxxx") {
+    return template.split("").map(item => item.replace("x", randomIntMinMax(0, 10))).toString().replace(/,/g, "");
+}
+
+console.log(randomPhoneNumber());
+
+function randomEmail(template="xxx@yyy.zzz") {
+    return template.replace("xxx", randomString(10)).replace("yyy", randomString(10)).replace("zzz", randomString(3));
+}
+
+console.log(randomEmail());
+
+function randomIP() {
+    return `${randomIntMax(256)}.${randomIntMax(256)}.${randomIntMax(256)}.${randomIntMax(255)}`;
+}
+
+console.log(randomIP());
+
+function randomEmoji() {
+    const listOfEmoji = require("./emoji.json");
+    return randomChoice(listOfEmoji);
+}
+
+console.log(randomEmoji())
+
+function randomCurrency() {
+    const listOfCurrencies = require("./currencies.json");
+    return randomChoice(listOfCurrencies);
+}
+
+console.log(randomCurrency())
+
