@@ -1,25 +1,24 @@
-
 console.log(Math.random());
 
 function randomIntMax(max) {
-    return Math.floor(Math.random() * max);
+  return Math.floor(Math.random() * max);
 }
 
 console.log(randomIntMax(9));
 
 function randomIntMinMax(min, max) {
-    return Math.floor(Math.random() * ( max - min ) + min);
+  return Math.floor(Math.random() * (max - min) + min);
 }
 
 console.log(randomIntMinMax(1, 9));
 
 function randomChoice(array) {
-    if (array.length > 0) {
-        return array[randomIntMax(array.length)];
-    } else {
-        console.log("The provided array is empty");
-        return null;
-    }
+  if (array.length > 0) {
+    return array[randomIntMax(array.length)];
+  } else {
+    console.log("The provided array is empty");
+    return null;
+  }
 }
 
 let a = []; // Length 0
@@ -30,45 +29,81 @@ console.log(randomIntMax(b.length));
 console.log(randomChoice(b));
 console.log(randomChoice(a));
 
-function randomString(length, charset='abcdefghijklmnopqrstuvwxyz') {
-    let result = "";
-    for (let i = 0; i < length; i++) {
-        result += charset[randomIntMax(charset.length)];
-    }
-    return result;
+function randomString(length, charset = "abcdefghijklmnopqrstuvwxyz") {
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    result += charset[randomIntMax(charset.length)];
+  }
+  return result;
 }
 
 console.log(randomString(12));
 
-function randomPhoneNumber(template="+x(xxx)xxxxxxx") {
-    return template.split("").map(item => item.replace("x", randomIntMinMax(0, 10))).toString().replace(/,/g, "");
+function randomPhoneNumber(template = "+x(xxx)xxxxxxx") {
+  return template
+    .split("")
+    .map((item) => item.replace("x", randomIntMinMax(0, 10)))
+    .toString()
+    .replace(/,/g, "");
 }
 
 console.log(randomPhoneNumber());
 
-function randomEmail(template="xxx@yyy.zzz") {
-    return template.replace("xxx", randomString(10)).replace("yyy", randomString(10)).replace("zzz", randomString(3));
+function randomEmail(template = "xxx@yyy.zzz") {
+  return template
+    .replace("xxx", randomString(10))
+    .replace("yyy", randomString(10))
+    .replace("zzz", randomString(3));
 }
 
 console.log(randomEmail());
 
 function randomIP() {
-    return `${randomIntMax(256)}.${randomIntMax(256)}.${randomIntMax(256)}.${randomIntMax(255)}`;
+  return `${randomIntMax(256)}.${randomIntMax(256)}.${randomIntMax(
+    256
+  )}.${randomIntMax(255)}`;
 }
 
 console.log(randomIP());
 
 function randomEmoji() {
-    const listOfEmoji = require("./emoji.json");
-    return randomChoice(listOfEmoji);
+  const listOfEmoji = require("./emoji.json");
+  return randomChoice(listOfEmoji);
 }
 
-console.log(randomEmoji())
+console.log(randomEmoji());
 
 function randomCurrency() {
-    const listOfCurrencies = require("./currencies.json");
-    return randomChoice(listOfCurrencies);
+  const listOfCurrencies = require("./currencies.json");
+  return randomChoice(listOfCurrencies);
 }
 
-console.log(randomCurrency())
+console.log(randomCurrency());
 
+function randomTimeZone() {
+  const lisfOfTimeZones = require("./timeZones.json");
+  return randomChoice(lisfOfTimeZones);
+}
+
+console.log(randomTimeZone());
+
+function randomCarBrand() {
+  const listOfCarBrands = require("./carBrands.json");
+  return randomChoice(listOfCarBrands);
+}
+
+console.log(randomCarBrand());
+
+function randomCarType() {
+  const listOfCarTypes = require("./carTypes.json");
+  return randomChoice(listOfCarTypes);
+}
+
+console.log(randomCarType());
+
+function randomColor() {
+  const colors = require("./colors.json");
+  return randomChoice(colors);
+}
+
+console.log(randomColor());
